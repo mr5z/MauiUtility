@@ -12,7 +12,9 @@ public class MauiIdentityClient(HttpClient httpClient) : CrossIdentityClient(htt
         var callbackUrl = new Uri(request.RedirectUri);
         var result = await WebAuthenticator.AuthenticateAsync(authUrl, callbackUrl);
         var serialized = JsonSerializer.Serialize(result.Properties);
-        var authorizationResponse = JsonSerializer.Deserialize<AuthorizationResponse>(serialized);
-        return authorizationResponse!;
+        var authorizationResponse = 
+            JsonSerializer.Deserialize<AuthorizationResponse>(serialized)
+            ?? throw new InvalidOperationException("Unable to deserialize data from response");
+        return authorizationResponse;
     }
 }

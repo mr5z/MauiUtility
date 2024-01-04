@@ -2,8 +2,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MauiUtility", "MauiUtility\MauiUtility.csproj", "{C009D8BC-9444-4120-8C08-80689A4F5549}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CrossUtility", "..\CrossUtility\src\CrossUtility.csproj", "{C360D045-3B13-49A1-8E3E-ED0A07B346F8}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthClient", "..\AuthClient\src\AuthClient.csproj", "{B833A3D3-3C65-425C-B402-8E5D81048B7E}"
 EndProject
 Global
