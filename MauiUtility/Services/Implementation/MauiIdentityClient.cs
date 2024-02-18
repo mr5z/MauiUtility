@@ -1,15 +1,17 @@
-﻿using AuthClient.Services.Identity;
-using AuthClient.Services.Identity.Requests;
-using System.Text.Json;
+﻿using System.Text.Json;
+using AuthClient.Models;
+using AuthClient.Models.Requests;
+using AuthClient.Services.Implementation;
+using CrossUtility.Services;
 
 namespace MauiUtility.Services.Implementation;
 
-public class MauiIdentityClient(HttpClient httpClient) : CrossIdentityClient(httpClient)
+public class MauiIdentityClient(IHttpService httpService) : CrossIdentityClient(httpService)
 {
     public override async Task<AuthorizationResponse> Authorize(AuthorizationRequest request)
     {
         var authUrl = request.BuildUrl();
-        var callbackUrl = new Uri(request.RedirectUri);
+        var callbackUrl = request.RedirectUri;
         var result = await WebAuthenticator.AuthenticateAsync(authUrl, callbackUrl);
         var serialized = JsonSerializer.Serialize(result.Properties);
         var authorizationResponse = 
